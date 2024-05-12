@@ -13,7 +13,18 @@ form.addEventListener('submit',e=>{
             score += 25;
         }
     });
-    console.log(score);
-    result.querySelector('span').textContent =`${score}%`;
+    // show result on page
+    scrollTo(0,0);
+
     result.classList.remove('d-none');
+    //animating the score
+    let output = 0;
+    const timer = setInterval(() => {
+        result.querySelector('span').textContent =`${output}%`;
+        if(output === score){
+            clearInterval(timer);
+        }
+        output++;   
+    },20);
+
 });
